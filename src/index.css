@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --colors-bg: #0a0a0a;
+  --colors-fg: #f5f5f5;
+  --colors-muted: #a3a3a3;
+  --colors-accent: #4f46e5; /* indigo-600 vibe */
+  --colors-card: #111827;   /* slate-900 */
+  --colors-border: #1f2937; /* slate-800 */
+}
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+body { background: var(--colors-bg); color: var(--colors-fg); font-family: var(--font-sans); }
+.btn {
+  @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium;
+  background: var(--colors-accent);
+  color: white;
+}
+.btn-outline {
+  @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium border;
+  border-color: var(--colors-border);
+  color: var(--colors-fg);
+  background: transparent;
+}
+.section {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+}
+.kbd { @apply rounded border px-2 py-0.5 text-xs; border-color: var(--colors-border); color: var(--colors-muted); }
+.card { @apply rounded-2xl border p-6; background: var(--colors-card); border-color: var(--colors-border); }
+.gradient-text {
+  background: linear-gradient(90deg, #fff, #a5b4fc 40%, #60a5fa 80%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* Animated gradient mesh */
+.bg-gradient-mesh {
+  background: radial-gradient(1200px 700px at 10% 10%, #4f46e5 0%, rgba(79,70,229,0) 60%),
+              radial-gradient(1000px 600px at 90% 20%, #06b6d4 0%, rgba(6,182,212,0) 60%),
+              radial-gradient(900px 500px at 30% 90%, #a855f7 0%, rgba(168,85,247,0) 60%);
+  filter: saturate(1.1) blur(20px);
+  animation: meshShift 22s ease-in-out infinite alternate;
+}
+@keyframes meshShift {
+  0% { transform: translate3d(0,0,0) scale(1); }
+  100% { transform: translate3d(0,-2%,0) scale(1.03); }
+}
+
+/* Film grain / noise */
+.texture-noise {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' opacity='0.08' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  image-rendering: pixelated;
+}
+
+/* Animated gradient mesh background */
+.bg-gradient-mesh {
+  background: radial-gradient(1200px 700px at 10% 10%, #4f46e5 0%, rgba(79,70,229,0) 60%),
+              radial-gradient(1000px 600px at 90% 20%, #06b6d4 0%, rgba(6,182,212,0) 60%),
+              radial-gradient(900px 500px at 30% 90%, #a855f7 0%, rgba(168,85,247,0) 60%);
+  filter: saturate(1.1) blur(20px);
+  animation: meshShift 22s ease-in-out infinite alternate;
+}
+@keyframes meshShift {
+  0% { transform: translate3d(0,0,0) scale(1); }
+  100% { transform: translate3d(0,-2%,0) scale(1.03); }
+}
+
+/* Film grain / noise */
+.texture-noise {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' opacity='0.08' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  image-rendering: pixelated;
+}
+
+/* Optional: smooth anchor scroll */
+html { scroll-behavior: smooth; }
+
+.r3f-canvas {
+  outline: none;
+}
+
+@keyframes haloPulse {
+  0%,100% { opacity: 0.9; transform: scale(1); }
+  50%     { opacity: 1;   transform: scale(1.02); }
+}
+.group:hover .halo {
+  animation: haloPulse 2.2s ease-in-out infinite;
+}
